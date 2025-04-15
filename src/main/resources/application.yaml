@@ -12,4 +12,4 @@ spring:
 
 jwt:
   secret: "kJ3984kfj390fkAJsd823kdfkKDJf983ksdflk32kf9sdf8s9dkfjsdlfjskdjfklsjdf" # минимум 64 символа
-  expiration: 3600000 # 1 час в мс
+  expiration: 3600000000 # 1000 час в мс
