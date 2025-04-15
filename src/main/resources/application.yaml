@@ -1,0 +1,15 @@
+application:
+  name: otp-application
+
+server:
+  port: 8095
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/otp
+    username: postgres
+    password: postgres
+
+jwt:
+  secret: yourSecretKeyForJWT
+  expiration: 3600000 # 1 час в мс
