@@ -11,5 +11,5 @@ spring:
     password: postgres
 
 jwt:
-  secret: yourSecretKeyForJWT
+  secret: "kJ3984kfj390fkAJsd823kdfkKDJf983ksdflk32kf9sdf8s9dkfjsdlfjskdjfklsjdf" # минимум 64 символа
   expiration: 3600000 # 1 час в мс
