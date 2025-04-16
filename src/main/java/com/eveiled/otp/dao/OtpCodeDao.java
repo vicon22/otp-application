@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -58,6 +60,21 @@ public class OtpCodeDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public List<OtpCode> findAllActive() {
+        List<OtpCode> result = new ArrayList<>();
+        String sql = "SELECT * FROM otp_codes WHERE status = 'ACTIVE'";
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                result.add(map(rs));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
     private OtpCode map(ResultSet rs) throws SQLException {
