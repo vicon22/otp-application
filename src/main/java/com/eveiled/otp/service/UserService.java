@@ -60,7 +60,7 @@ public class UserService {
      * Проверяет, существует ли уже зарегистрированный администратор.
      */
     public boolean adminExists() {
-        return userDao.findAllNonAdmins().stream()
+        return userDao.findAll().stream()
                 .anyMatch(user -> "ADMIN".equalsIgnoreCase(user.getRole()));
     }
 }

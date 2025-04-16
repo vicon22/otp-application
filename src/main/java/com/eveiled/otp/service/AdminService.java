@@ -21,7 +21,9 @@ public class AdminService {
     }
 
     public List<User> getAllNonAdmins() {
-        return userDao.findAllNonAdmins();
+        return userDao.findAll().stream()
+                .filter(user -> !"ADMIN".equals(user.getRole()))
+                .toList();
     }
 
     public void deleteUser(int userId) {

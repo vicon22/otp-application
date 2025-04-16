@@ -51,9 +51,9 @@ public class UserDao {
         }
     }
 
-    public List<User> findAllNonAdmins() {
+    public List<User> findAll() {
         List<User> users = new ArrayList<>();
-        String sql = "SELECT * FROM users WHERE role <> 'ADMIN'";
+        String sql = "SELECT * FROM users";
         try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
