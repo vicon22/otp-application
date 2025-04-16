@@ -1,5 +1,6 @@
 package com.eveiled.otp.service;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -12,6 +13,7 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 
+@Slf4j
 @Component
 public class TelegramService {
 
@@ -39,11 +41,11 @@ public class TelegramService {
             try (CloseableHttpResponse response = client.execute(request)) {
                 int statusCode = response.getStatusLine().getStatusCode();
                 if (statusCode != 200) {
-                    System.err.println("Ошибка отправки в Telegram. Код: " + statusCode);
+                    log.error("Ошибка отправки в Telegram. Код: {}", statusCode);
                 }
             }
         } catch (IOException e) {
-            System.err.println("Ошибка при обращении к Telegram API: " + e.getMessage());
+            log.error("Ошибка при обращении к Telegram API: {}", e.getMessage());
         }
     }
 

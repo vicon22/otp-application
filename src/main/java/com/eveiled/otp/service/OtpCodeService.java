@@ -4,6 +4,7 @@ import com.eveiled.otp.dao.OtpCodeDao;
 import com.eveiled.otp.dao.OtpConfigDao;
 import com.eveiled.otp.model.OtpCode;
 import com.eveiled.otp.model.OtpConfigDto;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -13,6 +14,7 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.Random;
 
+@Slf4j
 @Service
 public class OtpCodeService {
 
@@ -88,17 +90,17 @@ public class OtpCodeService {
     }
 
     public void sendToEmail(String email, String code) {
-        System.out.println("Sending OTP to email " + email + ": " + code);
+        log.info("Sending OTP to email {}: {}", email, code);
         emailService.sendOtp(email, code);
     }
 
     public void sendToSms(String phone, String code) {
-        System.out.println("Sending OTP via SMS to " + phone + ": " + code);
+        log.info("Sending OTP via SMS to {}: {}", phone, code);
         smsService.sendOtp(phone, code);
     }
 
     public void sendToTelegram(String chatId, String code) {
-        System.out.println("Sending OTP via Telegram to " + chatId + ": " + code);
+        log.info("Sending OTP via Telegram to {}: {}", chatId, code);
         telegramService.sendOtp(chatId, code);
     }
 

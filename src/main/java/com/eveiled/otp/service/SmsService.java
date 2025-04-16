@@ -1,5 +1,6 @@
 package com.eveiled.otp.service;
 
+import lombok.extern.slf4j.Slf4j;
 import org.smpp.Session;
 import org.smpp.TCPIPConnection;
 import org.smpp.pdu.*;
@@ -9,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+@Slf4j
 @Component
 public class SmsService {
 
@@ -58,7 +60,7 @@ public class SmsService {
             submit.setShortMessage("Ваш OTP-код: " + code);
 
             session.submit(submit);
-            System.out.println("SMS отправлено через SMPP: " + phone);
+            log.info("SMS отправлено через SMPP: {}", phone);
 
         } catch (Exception e) {
             e.printStackTrace();
