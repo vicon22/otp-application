@@ -26,13 +26,14 @@
 ### Конфигурация
 
 1. Создайте базу данных `otp_service` в PostgreSQL
-2. Настройте `application.yml` с данными для подключения
-3. Добавьте настройки в:
+2. Пролить скрипты из `resources/sql/create.sql`
+3. Настройте `application.yml` с данными для подключения
+4. Добавьте настройки в:
     - `email.properties`
     - `sms.properties`
     - `telegram.properties`
 
-4. Соберите и запустите приложение:
+5. Соберите и запустите приложение:
 
 ```bash
 ./gradlew bootRun
