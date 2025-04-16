@@ -20,15 +20,18 @@ public class OtpCodeService {
     private final OtpConfigDao configDao;
     private final TelegramService telegramService;
     private final EmailService emailService;
+    private final SmsService smsService;
 
     public OtpCodeService(OtpCodeDao otpDao,
                           OtpConfigDao configDao,
                           TelegramService telegramService,
-                          EmailService emailService) {
+                          EmailService emailService,
+                          SmsService smsService) {
         this.otpDao = otpDao;
         this.configDao = configDao;
         this.telegramService = telegramService;
         this.emailService = emailService;
+        this.smsService = smsService;
     }
 
     public String generateOtp(int userId, String operationId) {
@@ -91,6 +94,7 @@ public class OtpCodeService {
 
     public void sendToSms(String phone, String code) {
         System.out.println("Sending OTP via SMS to " + phone + ": " + code);
+        smsService.sendOtp(phone, code);
     }
 
     public void sendToTelegram(String chatId, String code) {
